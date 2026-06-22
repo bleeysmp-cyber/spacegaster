@@ -369,6 +369,68 @@ bleeysmp@gmail.com
 © 2026 SpaceGaster
 
 </footer>
+<section id="shop">
 
+<h1 class="title">🛒 Shop</h1>
+
+<div class="games">
+
+  <div class="card">
+    <div class="banner"></div>
+    <div class="content">
+      <h2>Premium Pack</h2>
+      <p>Lifetime access to a digital product.</p>
+      <h3 style="color:#00ffff;">€4</h3>
+      <button onclick="addToCart('Premium Pack', 4)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="banner"></div>
+    <div class="content">
+      <h2>Ultimate Bundle</h2>
+      <p>Complete bundle with lifetime access.</p>
+      <h3 style="color:#00ffff;">€10</h3>
+      <button onclick="addToCart('Ultimate Bundle', 10)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+<section id="cart">
+
+<h1 class="title">🛒 Shopping Cart</h1>
+
+<div class="card">
+  <div class="content">
+    <ul id="cart-items"></ul>
+    <h2>Total: €<span id="total">0</span></h2>
+    <button onclick="alert('Connect Stripe or PayPal here')">
+      Checkout
+    </button>
+  </div>
+</div>
+
+</section>
+
+<script>
+let total = 0;
+
+function addToCart(name, price) {
+  const list = document.getElementById("cart-items");
+  const item = document.createElement("li");
+  item.textContent = name + " - €" + price;
+  list.appendChild(item);
+
+  total += price;
+  document.getElementById("total").textContent = total.toFixed(2);
+}
+</script>
 </body>
 </html>
