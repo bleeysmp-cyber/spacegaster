@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,29 +13,33 @@
     font-family:Arial,sans-serif;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    background:#060611;
+    background:#05070c;
     color:white;
 }
 
-/* HEADER */
-
 header{
+    position:fixed;
+    width:100%;
+    top:0;
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:20px 50px;
-    background:rgba(10,10,20,.9);
-    position:sticky;
-    top:0;
-    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(12px);
+    z-index:1000;
 }
 
 .logo{
-    font-size:32px;
+    font-size:36px;
     font-weight:bold;
-    color:#b46cff;
-    text-shadow:0 0 20px #b46cff;
+    color:#00e5ff;
+    text-shadow:0 0 15px cyan;
 }
 
 nav a{
@@ -46,100 +50,155 @@ nav a{
 }
 
 nav a:hover{
-    color:#b46cff;
+    color:#00e5ff;
 }
 
-/* HERO */
-
 .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:120px 20px;
+    padding:30px;
+    background:
+        radial-gradient(circle at top,#00ffff33,transparent 60%),
+        linear-gradient(#05070c,#0d1320);
 }
 
 .hero h1{
-    font-size:72px;
-    background:linear-gradient(90deg,#8B5CF6,#EC4899,#22D3EE);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    font-size:90px;
+    color:#00ffff;
+    text-shadow:0 0 25px cyan;
 }
 
 .hero p{
-    margin-top:20px;
-    color:#cfcfcf;
-    font-size:20px;
+    max-width:750px;
+    margin-top:25px;
+    font-size:22px;
+    color:#d8d8d8;
 }
 
-.btn{
-    display:inline-block;
+.hero button{
     margin-top:35px;
-    background:#8B5CF6;
-    color:white;
-    text-decoration:none;
     padding:16px 34px;
-    border-radius:12px;
-    box-shadow:0 0 25px rgba(139,92,246,.6);
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    background:#00ffff;
     transition:.3s;
 }
 
-.btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 40px rgba(139,92,246,1);
+.hero button:hover{
+    transform:scale(1.08);
 }
 
-/* CARDS */
+section{
+    padding:90px 40px;
+}
+
+.title{
+    text-align:center;
+    font-size:42px;
+    color:#00ffff;
+    margin-bottom:45px;
+}
 
 .games{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-    padding:50px;
+    gap:25px;
 }
 
 .card{
-    background:#101020;
-    border-radius:18px;
+    background:#101623;
+    border-radius:15px;
     overflow:hidden;
     transition:.3s;
-    border:1px solid rgba(139,92,246,.3);
+    border:1px solid #1d2940;
 }
 
 .card:hover{
     transform:translateY(-8px);
-    box-shadow:0 0 30px rgba(139,92,246,.5);
+    box-shadow:0 0 25px rgba(0,255,255,.3);
 }
 
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
+.banner{
+    height:180px;
+    background:linear-gradient(135deg,#00d5ff,#3a4bff);
 }
 
-.card h2{
+.content{
     padding:20px;
 }
 
-.card p{
-    padding:0 20px 20px;
-    color:#c9c9c9;
+.content h2{
+    color:#00ffff;
+    margin-bottom:12px;
 }
 
-.card a{
-    display:block;
-    margin:20px;
+.content p{
+    color:#d3d3d3;
+    line-height:1.6;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:#111827;
+    padding:30px;
+    border-radius:12px;
     text-align:center;
-    text-decoration:none;
-    color:white;
-    background:#7c3aed;
-    padding:12px;
-    border-radius:10px;
 }
 
-/* FOOTER */
+.stat h3{
+    color:#00ffff;
+    font-size:34px;
+}
+
+.faq{
+    max-width:900px;
+    margin:auto;
+}
+
+.faq details{
+    background:#111827;
+    padding:18px;
+    margin-bottom:15px;
+    border-radius:8px;
+}
+
+.contact{
+    text-align:center;
+}
 
 footer{
-    text-align:center;
+    background:#030303;
     padding:40px;
+    text-align:center;
     color:#888;
+}
+
+@media(max-width:700px){
+
+.hero h1{
+    font-size:56px;
+}
+
+header{
+    flex-direction:column;
+    gap:15px;
+}
+
+nav a{
+    margin:8px;
+}
+
 }
 </style>
 
@@ -149,80 +208,157 @@ footer{
 
 <header>
 
-<div class="logo">
-🚀 SpaceGaster
-</div>
+<div class="logo">SPACEGASTER</div>
 
 <nav>
-<a href="#">Home</a>
-<a href="download.html">Downloads</a>
-<a href="#">Gallery</a>
-<a href="#">Contact</a>
+<a href="#games">Games</a>
+<a href="#stats">Stats</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
 </nav>
 
 </header>
 
 <section class="hero">
 
-<h1>SpaceGaster</h1>
+<h1>SPACEGASTER</h1>
 
 <p>
-Modern gaming downloads, projects and resources in one place.
+A modern gaming portal featuring showcases, screenshots, community
+projects and guides for popular games.
 </p>
 
-<a href="download.html" class="btn">
-Go to Download Center
-</a>
+<button onclick="location.href='#games'">
+Explore
+</button>
 
 </section>
 
-<section class="games">
+<section id="games">
+
+<h1 class="title">
+Featured Games
+</h1>
+
+<div class="games">
 
 <div class="card">
+<div class="banner"></div>
 
-<img src="images/minecraft.jpg" alt="Minecraft">
-
-<h2>⛏️ Minecraft</h2>
+<div class="content">
+<h2>Minecraft</h2>
 
 <p>
-Explore Minecraft-related downloads, tools and community content.
+in this hack you have aim crstalaura ALL HACKS CRYTOP IS THE SAME BTW.
 </p>
 
-<a href="#">
-View
-</a>
-
+</div>
 </div>
 
 <div class="card">
+<div class="banner"></div>
 
-<img src="images/cs2.jpg" alt="CS2">
-
-<h2>🎯 CS2</h2>
+<div class="content">
+<h2>Counter-Strike 2</h2>
 
 <p>
-Browse guides, resources and configurations for Counter-Strike 2.
+Bellycs2hack is a hack where you have skin changer and much more .
 </p>
 
-<a href="#">
-View
-</a>
-
+</div>
 </div>
 
 <div class="card">
+<div class="banner"></div>
 
-<img src="images/gta5.jpg" alt="GTA V">
-
-<h2>🚗 GTA V</h2>
+<div class="content">
+<h2>Grand Theft Auto V</h2>
 
 <p>
-Discover mods, tutorials and other GTA V community resources.
+This is the lunaGTA5 hack it can get uset to noclip in online and ind Fivem its works on five and gta online and story mode have fun Price is 5 dollors LIFETIME.
 </p>
 
-<a href="#">
-View
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="stats">
+
+<h1 class="title">
+Site Highlights
+</h1>
+
+<div class="stats">
+
+<div class="stat">
+<h3>100+</h3>
+<p>Gaming Articles</p>
+</div>
+
+<div class="stat">
+<h3>500+</h3>
+<p>Community Images</p>
+</div>
+
+<div class="stat">
+<h3>24/7</h3>
+<p>Updates</p>
+</div>
+
+<div class="stat">
+<h3>3</h3>
+<p>Featured Games</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="faq">
+
+<h1 class="title">
+FAQ
+</h1>
+
+<div class="faq">
+
+<details>
+<summary>What is SpaceGaster?</summary>
+<p>A gaming-themed website focused on showcases and community content.</p>
+</details>
+
+<details>
+<summary>Which games are featured?</summary>
+<p>Minecraft, Counter-Strike 2 and Grand Theft Auto V.</p>
+</details>
+
+<details>
+<summary>Is the site mobile friendly?</summary>
+<p>Yes, it is designed to work on phones, tablets and desktops.</p>
+</details>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h1 class="title">
+Contact
+</h1>
+
+<div class="contact">
+
+<p>Email:</p>
+
+<h2>
+<a href="mailto:bleeysmp@gmail.com" style="color:#00ffff;text-decoration:none;">
+bleeysmp@gmail.com
 </a>
+</h2>
 
 </div>
 
@@ -230,7 +366,7 @@ View
 
 <footer>
 
-© 2026 SpaceGaster. All Rights Reserved.
+© 2026 SpaceGaster
 
 </footer>
 
